@@ -2,7 +2,7 @@ import tensorflow as tf
 import keras
 import numpy as np
 
-AGE_CAP = 45
+AGE_CAP = 45 #if you feel personally offended by this value, feel free to modify it to your liking, however there is no guarantee for the results
 class Person:
     #constructs person with age, weight, level of exercise (0 to 1) and diet (0 to 1) where 0 is bad and 1 is good
     def __init__(self,age,weight,excercise,diet):
