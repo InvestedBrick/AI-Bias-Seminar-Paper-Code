@@ -1,3 +1,4 @@
+# A simple demonstration for sample selection bias in a neural network model
 import tensorflow as tf
 import keras
 import numpy as np
@@ -11,11 +12,11 @@ class Person:
         self.excercise = excercise
         self.diet = diet
         self.has_heart_problem = round(age * 0.1 + weight * 0.2 - excercise * 3 - diet * 4 + np.random.normal(-1, 1)) > 25 # the randomness is for genetics
-        # with these values ~37.5% of people have heart problems (lets assume it is a data set from the USA :) )
 
 def main():
     people = []
     # Create some people with semi-random attributes
+    # with these values ~37.5% of people have heart problems (lets assume it is a data set from the USA :) )
     for _ in range(5000):
         age = np.random.randint(18, 80)
         weight = np.random.randint(50, 150) + age * 0.3
@@ -74,7 +75,7 @@ if __name__ == "__main__":
     total_acc_old = 0.0
     total_acc_young = 0.0
     N_RUNS = 2
-    for i in range(N_RUNS): #avarage over 10 runs
+    for i in range(N_RUNS): #avarage over N_RUNS runs
         acc_old,acc_young = main()
         total_acc_old += acc_old
         total_acc_young += acc_young   
