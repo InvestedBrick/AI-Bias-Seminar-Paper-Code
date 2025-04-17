@@ -73,7 +73,7 @@ def main():
 if __name__ == "__main__":
     total_acc_old = 0.0
     total_acc_young = 0.0
-    N_RUNS = 2
+    N_RUNS = 10
     for i in range(N_RUNS): #avarage over N_RUNS runs
         acc_old,acc_young = main()
         total_acc_old += acc_old
