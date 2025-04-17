@@ -1,4 +1,5 @@
 # A demonstration for algorithmic bias in a simple neural network model
+# REWORK, may not be correctly algorithmic bias
 import keras
 import numpy as np
 
