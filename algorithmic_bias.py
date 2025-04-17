@@ -1,5 +1,4 @@
 # A demonstration for algorithmic bias in a simple neural network model
-import tensorflow as tf
 import keras
 import numpy as np
 
@@ -9,7 +8,7 @@ class Person:
         self.employed = employed
         self.postal_code = postal_code
 
-        #supposed simulate how getting a loan may depend on where you live
+        #supposed simulate how getting a loan may depend on where you live (high income areas vs rather poor areas)
         self.would_get_loan = education_level * 1.5 +  employed * 5 + postal_code/100 * 3 > 25
     
 def create_people(num_people):
