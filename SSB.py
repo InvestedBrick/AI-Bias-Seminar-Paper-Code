@@ -1,5 +1,4 @@
 # A simple demonstration for sample selection bias in a neural network model
-import tensorflow as tf
 import keras
 import numpy as np
 
