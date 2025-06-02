@@ -15,6 +15,7 @@ class Person:
 def create_people(num_people):
     people = []
 
+    #randomly generate people with different attributes
     for _ in range(num_people):
         credit_history = np.random.randint(0, 5)
         employed = np.random.randint(0, 2)
@@ -44,6 +45,7 @@ def main():
 
     model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
 
+    # train the model
     model.fit(X, y, epochs=200, batch_size=32)
 
 
