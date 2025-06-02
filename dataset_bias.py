@@ -20,6 +20,7 @@ def create_candidates(num_candidates):
     return candidates
 
 def main():
+    #seed for reproducibility
     np.random.seed(42)
     candidates = create_candidates(10000)
 
@@ -36,6 +37,7 @@ def main():
 
     model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
 
+    # Train the model
     model.fit(X, y, epochs=50, batch_size=32)
 
     # Test the model on example data
