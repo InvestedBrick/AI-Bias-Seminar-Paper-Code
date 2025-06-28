@@ -9,7 +9,7 @@ class Person:
         self.postal_code = postal_code
 
         # Target function includes postal_code (this introduces unfair bias)
-        self.would_get_loan = self.income * 0.0003 + credit_history * 3 + postal_code * 0.1 > 85
+        self.would_get_loan = self.income * 0.0003 + credit_history * 3 + postal_code * 0.1 > 70
 
 def create_people(num_people):
     people = []
@@ -41,13 +41,11 @@ def main():
 
     model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
 
-    model.fit(X, y, epochs=200, batch_size=16)
+    model.fit(X, y, epochs=200, batch_size=32)
 
     # Test counterfactual fairness
 
-
-    print(f"Model input: [credit_history=2,employed=1,income=50_000,postal_code=200], Should they get the load according to the model?: {model.predict(np.array([[2,1,50000]]))[0][0] > 0.5}" )
-    print(f"Model input: [credit_history=2,employed=1,income=50_000,postal_code=950], Should they get the load according to the model?: {model.predict(np.array([[2,1,50000]]))[0][0] > 0.5}" )
+    print(f"Model input: [credit_history=2,employed=1,income=50_000], Should they get the load according to the model?: {model.predict(np.array([[2,1,50000]]))[0][0] > 0.5}" )
 
 
 if __name__ == "__main__":
