@@ -10,7 +10,7 @@ class Person:
         self.postal_code = postal_code
 
         #supposed simulate how getting a loan may depend on where you live (high income areas vs rather poor areas)
-        self.would_get_loan = self.income * 0.0003 * employed + credit_history * 3 + postal_code * 0.1 > 85
+        self.would_get_loan = self.income * 0.0003 * employed + credit_history * 3 + postal_code * 0.1 > 70
     
 def create_people(num_people):
     people = []
