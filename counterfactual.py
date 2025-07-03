@@ -1,6 +1,8 @@
 import keras
 import numpy as np
 
+p_ref = 500
+
 class Person:
     def __init__(self, credit_history, income, employed, postal_code):
         self.credit_history = credit_history
@@ -8,8 +10,12 @@ class Person:
         self.income = income * employed
         self.postal_code = postal_code
 
-        # Target function includes postal_code (this introduces unfair bias)
-        self.would_get_loan = self.income * 0.0003 + credit_history * 3 + postal_code * 0.1 > 70
+        # original
+        self.y_orig = income*0.0003 + credit_history*3 + postal_code*0.1 > 70
+
+        # counterfactual (fix postal_code = p_ref)
+        self.y_cf   = income*0.0003 + credit_history*3 + p_ref*0.1 > 70
+
 
 def create_people(num_people):
     people = []
@@ -28,9 +34,8 @@ def main():
 
     sample = [p for p in people if np.random.rand() > 0.7]
     
-    # EXCLUDE 'postal_code' (sensitive) from training
     X = np.array([[p.credit_history, p.employed, p.income] for p in sample])
-    y = np.array([p.would_get_loan for p in sample])
+    y = np.array([p.y_cf for p in sample])
 
     model = keras.Sequential([
         keras.layers.InputLayer(input_shape=(3,)),
